@@ -34,8 +34,12 @@
       // Funktion, die aufgerufen wird, wenn das Video angeklickt wird
       function videoClicked() {
         // Zeige den Download-Button
-        document.getElementById('downloadBtn').style.display = 'block';
+        var downloadBtn = document.getElementById('downloadBtn');
+        downloadBtn.style.display = 'block';
+        // Entferne das Eventlistener, um zu verhindern, dass der Button erneut versteckt wird
+        document.getElementById('videoFrame').removeEventListener('click', videoClicked);
       }
+
 
       // Funktion zum Herunterladen der PDF
       function downloadPDF() {
