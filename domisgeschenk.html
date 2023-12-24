@@ -24,25 +24,20 @@
     </style>
     <title>Domi's Geschenk</title>
   </head>
-  <body>
+  <body onclick="showDownloadButton()">
     <h1>Merry Christmas Domi 🎅🏼🎄🇯🇲</h1>
     <iframe id="videoFrame" width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=j2GYudiEjuRqn7aL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     
-    <button id="downloadBtn" onclick="downloadPDF()">Download PDF</button>
+    <button id="downloadBtn" onclick="downloadPDF()">PDF herunterladen</button>
 
     <script>
-      // Funktion, die aufgerufen wird, wenn das Video angeklickt wird
-      function videoClicked() {
+      // Funktion, die aufgerufen wird, wenn irgendwo auf die Seite geklickt wird
+      function showDownloadButton() {
         // Zeige den Download-Button
         document.getElementById('downloadBtn').style.display = 'block';
-      }
-
-      // Füge den Eventlistener zum Klicken des Videos hinzu
-      document.getElementById('videoFrame').addEventListener('click', function() {
-        videoClicked();
         // Entferne den Eventlistener, um zu verhindern, dass der Button erneut versteckt wird
-        document.getElementById('videoFrame').removeEventListener('click', arguments.callee);
-      });
+        document.body.removeEventListener('click', showDownloadButton);
+      }
 
       // Funktion zum Herunterladen der PDF
       function downloadPDF() {
