@@ -10,10 +10,17 @@
         padding: 20px;
         text-align: center;
       }
+      #videoContainer {
+        position: relative;
+      }
+      #videoFrame {
+        width: 560px;
+        height: 315px;
+        margin-bottom: 20px;
+      }
       #downloadBtn {
         display: none;
         padding: 15px 30px;
-        margin: 15px;
         font-size: 18px;
         cursor: pointer;
         background-color: red;
@@ -21,30 +28,29 @@
         border: none;
         border-radius: 5px;
         text-decoration: none;
-        position: absolute; /* Positioniere den Button absolut */
-        top: 50%; /* Zentriere vertikal */
-        left: 50%; /* Zentriere horizontal */
-        transform: translate(-50%, -50%); /* Korrigiere die Position */
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        transform: translate(-50%, 50%);
       }
     </style>
     <title>Domi's Geschenk</title>
   </head>
   <body onclick="showDownloadButton()">
     <h1>Merry Christmas Domi 🎅🏼🎄🇯🇲</h1>
-    <iframe id="videoFrame" width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=j2GYudiEjuRqn7aL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     
-    <button id="downloadBtn" onclick="downloadPDF()">PDF herunterladen</button>
+    <div id="videoContainer">
+      <iframe id="videoFrame" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=j2GYudiEjuRqn7aL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    
+      <button id="downloadBtn" onclick="downloadPDF()">PDF herunterladen</button>
+    </div>
 
     <script>
-      // Funktion, die aufgerufen wird, wenn irgendwo auf die Seite geklickt wird
       function showDownloadButton() {
-        // Zeige den Download-Button
         document.getElementById('downloadBtn').style.display = 'block';
-        // Entferne den Eventlistener, um zu verhindern, dass der Button erneut versteckt wird
         document.body.removeEventListener('click', showDownloadButton);
       }
 
-      // Funktion zum Herunterladen der PDF
       function downloadPDF() {
         window.location.href = 'https://drive.google.com/uc?export=download&id=1lzwMjOSHeihMtfoDrPU9mgCMXOiaVd7R';
       }
