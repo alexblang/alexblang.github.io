@@ -6,19 +6,33 @@
     <style>
       body {
         font-family: Helvetica, Arial, sans-serif;
-        margin: 0; /* Um den Standardrand des Body-Elements zu entfernen */
-        padding: 20px; /* Füge etwas Abstand zum Inhalt hinzu */
+        margin: 0;
+        padding: 20px;
         text-align: center;
+      }
+      #downloadBtn {
+        display: none; /* Verstecke den Button standardmäßig */
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
       }
     </style>
     <title>Domi's Geschenk</title>
   </head>
   <body>
-    <h1>Merry christmas Domi 🎅🏼🎄🇯🇲</h1>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=j2GYudiEjuRqn7aL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    <button onclick="downloadPDF()">PDF herunterladen</button>
+    <h1>Merry Christmas Domi 🎅🏼🎄🇯🇲</h1>
+    <iframe id="videoFrame" width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=j2GYudiEjuRqn7aL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    
+    <button id="downloadBtn" onclick="downloadPDF()">PDF herunterladen</button>
 
     <script>
+      // Funktion, die aufgerufen wird, wenn das Video abgespielt wurde
+      function videoPlayed() {
+        // Zeige den Download-Button
+        document.getElementById('downloadBtn').style.display = 'block';
+      }
+
+      // Funktion zum Herunterladen der PDF
       function downloadPDF() {
         window.location.href = 'https://drive.google.com/uc?export=download&id=1lzwMjOSHeihMtfoDrPU9mgCMXOiaVd7R';
       }
