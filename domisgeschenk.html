@@ -11,12 +11,14 @@
         text-align: center;
         height: 100vh;
       }
+      
       #videoContainer {
         position: relative;
         overflow: hidden;
         padding-bottom: 56.25%; /* 16:9-Verhältnis für responsive Anzeige */
         margin-bottom: 20px;
       }
+      
       #videoFrame {
         width: 100%;
         height: 100%;
@@ -24,6 +26,7 @@
         top: 0;
         left: 0;
       }
+      
       #downloadBtn {
         display: none;
         padding: 15px 30px;
@@ -40,15 +43,16 @@
     </style>
     <title>Domi's Geschenk</title>
   </head>
+  
   <body onclick="showDownloadButton()">
     <h1>Merry Christmas Domi 🎅🏼🎄🇯🇲</h1>
     
     <div id="videoContainer">
       <iframe id="videoFrame" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=j2GYudiEjuRqn7aL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    
-      <button id="downloadBtn" onclick="downloadPDF()">PDF herunterladen</button>
     </div>
 
+    <button id="downloadBtn" onclick="downloadPDF()">PDF herunterladen</button>
+    
     <script>
       function showDownloadButton() {
         document.getElementById('downloadBtn').style.display = 'block';
