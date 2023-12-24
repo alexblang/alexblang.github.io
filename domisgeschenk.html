@@ -26,7 +26,7 @@
   </head>
   <body>
     <h1>Merry Christmas Domi 🎅🏼🎄🇯🇲</h1>
-    <iframe id="videoFrame" width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=j2GYudiEjuRqn7aL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen onclick="videoClicked()"></iframe>
+    <iframe id="videoFrame" width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=j2GYudiEjuRqn7aL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     
     <button id="downloadBtn" onclick="downloadPDF()">PDF herunterladen</button>
 
@@ -34,12 +34,15 @@
       // Funktion, die aufgerufen wird, wenn das Video angeklickt wird
       function videoClicked() {
         // Zeige den Download-Button
-        var downloadBtn = document.getElementById('downloadBtn');
-        downloadBtn.style.display = 'block';
-        // Entferne das Eventlistener, um zu verhindern, dass der Button erneut versteckt wird
-        document.getElementById('videoFrame').removeEventListener('click', videoClicked);
+        document.getElementById('downloadBtn').style.display = 'block';
       }
 
+      // Füge den Eventlistener zum Klicken des Videos hinzu
+      document.getElementById('videoFrame').addEventListener('click', function() {
+        videoClicked();
+        // Entferne den Eventlistener, um zu verhindern, dass der Button erneut versteckt wird
+        document.getElementById('videoFrame').removeEventListener('click', arguments.callee);
+      });
 
       // Funktion zum Herunterladen der PDF
       function downloadPDF() {
