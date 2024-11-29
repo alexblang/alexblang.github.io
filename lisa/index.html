@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lisa's Adventskalender</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/snow.png');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 20px;
+            color: #c62828;
+            font-size: 3em;
+            text-shadow: 2px 2px #ffffff;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 10px;
+        }
+
+        .door {
+            background: linear-gradient(to bottom, #ff5252, #c62828);
+            color: #fffde7;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 3px solid #ffffff;
+        }
+
+        .door:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Overlay Styles */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards; /* Animation */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .overlay-content {
+            background: linear-gradient(to bottom, #fff9c4, #ffe082);
+            color: #6d4c41;
+            padding: 20px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transform: scale(0.8);
+            animation: scaleUp 0.5s forwards; /* Animation */
+        }
+
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.8);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .close-btn {
+            background-color: #8bc34a;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .close-btn:hover {
+            background-color: #558b2f;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .calendar {
+                grid-template-columns: 1fr;
+            }
+
+            .door {
+                height: auto;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Lisa's Adventskalender 🎄</h1>
+    <div class="calendar">
+        <div class="door" data-door="1">🎁 Türchen 1</div>
+        <div class="door" data-door="2">🎁 Türchen 2</div>
+        <div class="door" data-door="3">🎁 Türchen 3</div>
+        <div class="door" data-door="4">🎁 Türchen 4</div>
+        <div class="door" data-door="5">🎁 Türchen 5</div>
+        <div class="door" data-door="6">🎁 Türchen 6</div>
+        <div class="door" data-door="7">🎁 Türchen 7</div>
+        <div class="door" data-door="8">🎁 Türchen 8</div>
+        <div class="door" data-door="9">🎁 Türchen 9</div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay">
+        <div class="overlay-content">
+            <h2 id="overlay-title">Titel</h2>
+            <p id="overlay-text">Inhalt des Türchens</p>
+            <button class="close-btn" onclick="closeOverlay()">Schließen</button>
+        </div>
+    </div>
+
+    <script>
+        // Inhalte für jedes Türchen
+        const content = {
+            1: { title: "Türchen 1 🎄", text: "Hier ist der weihnachtliche Inhalt für Türchen 1!" },
+            2: { title: "Türchen 2 🎅", text: "Hier ist der weihnachtliche Inhalt für Türchen 2!" },
+            3: { title: "Türchen 3 ❄️", text: "Hier ist der weihnachtliche Inhalt für Türchen 3!" },
+            4: { title: "Türchen 4 🎁", text: "Hier ist der weihnachtliche Inhalt für Türchen 4!" },
+            5: { title: "Türchen 5 🔔", text: "Hier ist der weihnachtliche Inhalt für Türchen 5!" },
+            6: { title: "Türchen 6 🌟", text: "Hier ist der weihnachtliche Inhalt für Türchen 6!" },
+            7: { title: "Türchen 7 🎶", text: "Hier ist der weihnachtliche Inhalt für Türchen 7!" },
+            8: { title: "Türchen 8 🍪", text: "Hier ist der weihnachtliche Inhalt für Türchen 8!" },
+            9: { title: "Türchen 9 ✨", text: "Hier ist der weihnachtliche Inhalt für Türchen 9!" },
+        };
+
+        // Öffne Overlay
+        document.querySelectorAll('.door').forEach(door => {
+            door.addEventListener('click', () => {
+                const doorNumber = door.getAttribute('data-door');
+                const overlay = document.getElementById('overlay');
+                document.getElementById('overlay-title').innerText = content[doorNumber].title;
+                document.getElementById('overlay-text').innerText = content[doorNumber].text;
+                overlay.style.display = 'flex';
+            });
+        });
+
+        // Schließe Overlay
+        function closeOverlay() {
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
