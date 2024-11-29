@@ -4,15 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lisa's Adventskalender</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="./style.css">
     <style>
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
             text-align: center;
             background-color: #f0f8ff;
-            background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/snow.png');
+            background-image: url('background.jpg');
             background-size: cover;
             margin: 0;
             padding: 0;
+        }
+
+        button {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
         }
 
         h1 {
@@ -20,13 +26,14 @@
             color: #c62828;
             font-size: 3em;
             text-shadow: 2px 2px #ffffff;
+            padding-top: 30px;
         }
 
         .calendar {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
-            max-width: 600px;
+            max-width: 1200px;
             margin: 20px auto;
             padding: 10px;
         }
@@ -41,7 +48,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100px;
+            height: 250px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
@@ -84,7 +91,7 @@
             padding: 20px;
             border-radius: 15px;
             width: 90%;
-            max-width: 500px;
+            max-width: 800px;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             transform: scale(0.8);
@@ -127,59 +134,283 @@
                 padding: 15px;
             }
         }
+
+        /* Lichterkette */
+
+        .lightrope {
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            position: absolute;
+            z-index: -10;
+            margin: -15px 0 0 0;
+            padding: 0;
+            pointer-events: none;
+            width: 100%;
+        }
+
+            .lightrope li {
+            position: relative;
+            -webkit-animation-fill-mode: both;
+                    animation-fill-mode: both;
+            -webkit-animation-iteration-count: infinite;
+                    animation-iteration-count: infinite;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: block;
+            width: 12px;
+            height: 28px;
+            border-radius: 50%;
+            margin: 20px;
+            display: inline-block;
+            background: #00f7a5;
+            box-shadow: 0px 4.6666666667px 24px 3px #00f7a5;
+            -webkit-animation-name: flash-1;
+                    animation-name: flash-1;
+            -webkit-animation-duration: 2s;
+                    animation-duration: 2s;
+        }
+            .lightrope li:nth-child(2n+1) {
+            background: aqua;
+            box-shadow: 0px 4.6666666667px 24px 3px rgba(0, 255, 255, 0.5);
+            -webkit-animation-name: flash-2;
+                    animation-name: flash-2;
+            -webkit-animation-duration: 0.4s;
+                    animation-duration: 0.4s;
+        }
+        .lightrope li:nth-child(4n+2) {
+            background: #f70094;
+            box-shadow: 0px 4.6666666667px 24px 3px #f70094;
+            -webkit-animation-name: flash-3;
+                    animation-name: flash-3;
+            -webkit-animation-duration: 1.1s;
+                    animation-duration: 1.1s;
+            }
+            .lightrope li:nth-child(odd) {
+            -webkit-animation-duration: 1.8s;
+                    animation-duration: 1.8s;
+            }
+            .lightrope li:nth-child(3n+1) {
+            -webkit-animation-duration: 1.4s;
+                    animation-duration: 1.4s;
+        }
+        .lightrope li:before {
+            content: "";
+            position: absolute;
+            background: #222;
+            width: 10px;
+            height: 9.3333333333px;
+            border-radius: 3px;
+            top: -4.6666666667px;
+            left: 1px;
+        }
+        .lightrope li:after {
+            content: "";
+            top: -14px;
+            left: 9px;
+            position: absolute;
+            width: 52px;
+            height: 18.6666666667px;
+            border-bottom: solid #222 2px;
+            border-radius: 50%;
+        }
+        .lightrope li:last-child:after {
+            content: none;
+        }
+        .lightrope li:first-child {
+            margin-left: -40px;
+        }
+
+        @-webkit-keyframes flash-1 {
+            0%, 100% {
+                background: #00f7a5;
+                box-shadow: 0px 4.6666666667px 24px 3px #00f7a5;
+            }
+            50% {
+                background: rgba(0, 247, 165, 0.4);
+                box-shadow: 0px 4.6666666667px 24px 3px rgba(0, 247, 165, 0.2);
+            }
+        }
+
+        @keyframes flash-1 {
+        0%, 100% {
+            background: #00f7a5;
+            box-shadow: 0px 4.6666666667px 24px 3px #00f7a5;
+        }
+        50% {
+            background: rgba(0, 247, 165, 0.4);
+            box-shadow: 0px 4.6666666667px 24px 3px rgba(0, 247, 165, 0.2);
+        }
+        }
+        @-webkit-keyframes flash-2 {
+        0%, 100% {
+            background: aqua;
+            box-shadow: 0px 4.6666666667px 24px 3px aqua;
+        }
+        50% {
+            background: rgba(0, 255, 255, 0.4);
+            box-shadow: 0px 4.6666666667px 24px 3px rgba(0, 255, 255, 0.2);
+        }
+        }
+        @keyframes flash-2 {
+        0%, 100% {
+            background: aqua;
+            box-shadow: 0px 4.6666666667px 24px 3px aqua;
+        }
+        50% {
+            background: rgba(0, 255, 255, 0.4);
+            box-shadow: 0px 4.6666666667px 24px 3px rgba(0, 255, 255, 0.2);
+        }
+        }
+        @-webkit-keyframes flash-3 {
+        0%, 100% {
+            background: #f70094;
+            box-shadow: 0px 4.6666666667px 24px 3px #f70094;
+        }
+        50% {
+            background: rgba(247, 0, 148, 0.4);
+            box-shadow: 0px 4.6666666667px 24px 3px rgba(247, 0, 148, 0.2);
+        }
+        }
+        @keyframes flash-3 {
+        0%, 100% {
+            background: #f70094;
+            box-shadow: 0px 4.6666666667px 24px 3px #f70094;
+        }
+        50% {
+            background: rgba(247, 0, 148, 0.4);
+            box-shadow: 0px 4.6666666667px 24px 3px rgba(247, 0, 148, 0.2);
+        }
+        }
     </style>
 </head>
 <body>
+    <ul class="lightrope">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     <h1>Lisa's Adventskalender 🎄</h1>
     <div class="calendar">
-        <div class="door" data-door="1">🎁 Türchen 1</div>
-        <div class="door" data-door="2">🎁 Türchen 2</div>
-        <div class="door" data-door="3">🎁 Türchen 3</div>
-        <div class="door" data-door="4">🎁 Türchen 4</div>
-        <div class="door" data-door="5">🎁 Türchen 5</div>
-        <div class="door" data-door="6">🎁 Türchen 6</div>
-        <div class="door" data-door="7">🎁 Türchen 7</div>
-        <div class="door" data-door="8">🎁 Türchen 8</div>
-        <div class="door" data-door="9">🎁 Türchen 9</div>
+        <div class="door" data-door="4"><h2>🎁 Türchen 4</h2></div>
+        <div class="door" data-door="5"><h2>🎁 Türchen 5</h2></div>
+        <div class="door" data-door="6"><h2>🎁 Türchen 6</h2></div>
+        <div class="door" data-door="7"><h2>🎁 Türchen 7</h2></div>
+        <div class="door" data-door="8"><h2>🎁 Türchen 8</h2></div>
+        <div class="door" data-door="9"><h2>🎁 Türchen 9</h2></div>
     </div>
 
-    <!-- Overlay -->
-    <div id="overlay" class="overlay">
+    <!-- Overlays -->
+    <div id="overlay-4" class="overlay">
         <div class="overlay-content">
-            <h2 id="overlay-title">Titel</h2>
-            <p id="overlay-text">Inhalt des Türchens</p>
+            <h2>Türchen 4</h2>
+            <p>Was ist das einzige was euch für einen perfekten Lanzarote-Urlaub noch fehlt? Richtig, eine Spotify Playlist, nur für euch 🙏🏼 Viel Spaß beim Hören!</p>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6MA4kUYXYehYuelFsBIRTM?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <button class="close-btn" onclick="closeOverlay()">Schließen</button>
+        </div>
+    </div>
+
+    <div id="overlay-5" class="overlay">
+        <div class="overlay-content">
+            <h2>Titel für Türchen 5</h2>
+            <p>Inhalt des Türchens 5!</p>
+            <button class="close-btn" onclick="closeOverlay()">Schließen</button>
+        </div>
+    </div>
+
+    <div id="overlay-6" class="overlay">
+        <div class="overlay-content">
+            <h2>Titel für Türchen 6</h2>
+            <p>Inhalt des Türchens 6!</p>
+            <button class="close-btn" onclick="closeOverlay()">Schließen</button>
+        </div>
+    </div>
+
+    <div id="overlay-7" class="overlay">
+        <div class="overlay-content">
+            <h2>Titel für Türchen 7</h2>
+            <p>Inhalt des Türchens 7!</p>
+            <button class="close-btn" onclick="closeOverlay()">Schließen</button>
+        </div>
+    </div>
+
+    <div id="overlay-8" class="overlay">
+        <div class="overlay-content">
+            <h2>Titel für Türchen 8</h2>
+            <p>Inhalt des Türchens 8!</p>
+            <button class="close-btn" onclick="closeOverlay()">Schließen</button>
+        </div>
+    </div>
+
+    <div id="overlay-9" class="overlay">
+        <div class="overlay-content">
+            <h2>Titel für Türchen 9</h2>
+            <p>Inhalt des Türchens 9!</p>
             <button class="close-btn" onclick="closeOverlay()">Schließen</button>
         </div>
     </div>
 
     <script>
-        // Inhalte für jedes Türchen
-        const content = {
-            1: { title: "Türchen 1 🎄", text: "Hier ist der weihnachtliche Inhalt für Türchen 1!" },
-            2: { title: "Türchen 2 🎅", text: "Hier ist der weihnachtliche Inhalt für Türchen 2!" },
-            3: { title: "Türchen 3 ❄️", text: "Hier ist der weihnachtliche Inhalt für Türchen 3!" },
-            4: { title: "Türchen 4 🎁", text: "Hier ist der weihnachtliche Inhalt für Türchen 4!" },
-            5: { title: "Türchen 5 🔔", text: "Hier ist der weihnachtliche Inhalt für Türchen 5!" },
-            6: { title: "Türchen 6 🌟", text: "Hier ist der weihnachtliche Inhalt für Türchen 6!" },
-            7: { title: "Türchen 7 🎶", text: "Hier ist der weihnachtliche Inhalt für Türchen 7!" },
-            8: { title: "Türchen 8 🍪", text: "Hier ist der weihnachtliche Inhalt für Türchen 8!" },
-            9: { title: "Türchen 9 ✨", text: "Hier ist der weihnachtliche Inhalt für Türchen 9!" },
-        };
-
-        // Öffne Overlay
         document.querySelectorAll('.door').forEach(door => {
             door.addEventListener('click', () => {
                 const doorNumber = door.getAttribute('data-door');
-                const overlay = document.getElementById('overlay');
-                document.getElementById('overlay-title').innerText = content[doorNumber].title;
-                document.getElementById('overlay-text').innerText = content[doorNumber].text;
+                const overlay = document.getElementById(`overlay-${doorNumber}`);
                 overlay.style.display = 'flex';
             });
         });
 
-        // Schließe Overlay
+        document.querySelectorAll('.overlay').forEach(overlay => {
+            overlay.addEventListener('click', (event) => {
+                if (event.target === overlay) {
+                    closeOverlay();
+                }
+            });
+        });
+
         function closeOverlay() {
-            document.getElementById('overlay').style.display = 'none';
+            document.querySelectorAll('.overlay').forEach(overlay => {
+                overlay.style.display = 'none';
+            });
         }
     </script>
 </body>
