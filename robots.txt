@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /domisgeschenk.html
+
+Sitemap: https://www.alexlang.me/sitemap.xml
