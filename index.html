@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Alex Lang</title>
-    <meta name="description" content="Persönliche Seite von Alex Lang.">
+    <meta name="description" content="Persönliche Seite von Alex Lang — Notizen zu selbst gebauten Werkzeugen, kleinen Heimservern und Automatisierung.">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/svg+xml" href="/icon.svg">
     <link rel="apple-touch-icon" href="/icon.png">
@@ -12,14 +12,60 @@
       body { font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
              max-width: 40rem; margin: 4rem auto; padding: 0 1.5rem;
              line-height: 1.6; color: #222; }
-      blockquote { margin: 2rem 0 0; padding-left: 1rem;
+      h1 { margin-bottom: 0.25rem; }
+      h2 { margin-top: 2.5rem; font-size: 1.15rem; }
+      .lead { color: #555; margin-top: 0; }
+      p { margin: 0.75rem 0; }
+      ul { padding-left: 1.2rem; }
+      li { margin: 0.6rem 0; }
+      a { color: #4338ca; }
+      blockquote { margin: 3rem 0 0; padding-left: 1rem;
                    border-left: 3px solid #ddd; color: #555; font-style: italic; }
       blockquote footer { font-style: normal; font-size: 0.9rem; margin-top: 0.5rem; }
+      hr { margin: 3rem 0 1.5rem; border: 0; border-top: 1px solid #eee; }
+      footer.site { font-size: 0.9rem; color: #666; }
     </style>
   </head>
   <body>
     <h1>Alex Lang</h1>
-    <p>Persönliche Seite. Diese Domain wird für eigene Projekte genutzt.</p>
+    <p class="lead">Persönliche Seite. Hier liegen ein paar Notizen zu Dingen, die ich
+      selbst baue — meist kleine Werkzeuge für den eigenen Alltag.</p>
+
+    <h2>Worum es hier geht</h2>
+    <p>Ich mag Software, die einem eine konkrete Reibung abnimmt und danach nicht weiter
+      auffällt. Fast alles, was ich baue, läuft auf eigener Hardware bei mir zu Hause:
+      ein Raspberry Pi, ein bisschen Automatisierung, keine fremde Cloud dazwischen.
+      Das ist langsamer zu bauen als der bequeme Weg, dafür weiß ich, wo meine Daten
+      liegen.</p>
+
+    <h2>Projekte</h2>
+    <ul>
+      <li><strong>Second Brain</strong> — ein persönliches Wissenssystem auf Basis eines
+        Obsidian-Vaults, selbst gehostet und über das Model Context Protocol an einen
+        KI-Assistenten angebunden. Notizen bleiben schlichte Markdown-Dateien auf meiner
+        eigenen Platte; der Assistent darf lesen und nur nach Rückfrage schreiben.</li>
+      <li><strong>Heimserver-Infrastruktur</strong> — ein Raspberry Pi als kleiner
+        Dauerläufer: Dienste, Backups mit regelmäßig getesteter Wiederherstellung,
+        Fernzugriff über einen Tunnel statt offener Ports. Weniger spektakulär als es
+        klingt, aber lehrreich in jedem Detail.</li>
+      <li><strong>Netzwerkweiter Filter</strong> — Pi-hole im eigenen Netz, damit Werbung
+        und Tracker gar nicht erst auf den Geräten ankommen.</li>
+      <li><strong>Kleinkram</strong> — Schriftgestaltung, ein E-Ink-Display mit
+        Tagesübersicht, diverse Skripte, die genau ein Problem lösen und sonst nichts.</li>
+    </ul>
+
+    <h2>Notizen zum Bauen</h2>
+    <p>Zwei Dinge, die ich bei diesen Projekten immer wieder gelernt habe: Ein Backup,
+      das nie zurückgespielt wurde, ist kein Backup. Und Hardware altert leise — eine
+      SD-Karte kann jahrelang scheinbar funktionieren und dabei längst still Daten
+      verfälschen. Beides merkt man nur, wenn man aktiv nachsieht.</p>
+
+    <hr>
+    <footer class="site">
+      Code liegt größtenteils auf <a href="https://github.com/alexblang"
+      rel="me">GitHub</a>.
+    </footer>
+
     <blockquote>
       „Niemand hat die Absicht, eine Mauer zu errichten."
       <footer>— Bob der Baumeister</footer>
