@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /secondbrain
 
 Sitemap: https://www.alexlang.me/sitemap.xml
